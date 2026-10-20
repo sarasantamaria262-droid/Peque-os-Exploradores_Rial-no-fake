@@ -1,0 +1,366 @@
+/* ===== GALERÍA – Pequeños Exploradores ===== */
+:root {
+  --cafe: #a8531a;
+  --cafe-oscuro: #5a2d0c;
+  --verde: #2e7d32;
+  --fuente: "Fredoka", "Baloo 2", "Comic Sans MS", sans-serif;
+}
+
+.pagina-galeria {
+  margin: 0;
+  font-family: var(--fuente);
+  color: var(--cafe-oscuro);
+  background: transparent;
+}
+
+/* ---------- HEADER (flota sobre el cielo, como en el inicio) ---------- */
+.pagina-galeria .header-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 20;
+}
+
+/* ---------- HERO ---------- */
+.gal-hero {
+  position: relative;
+  z-index: 1; /* nubes del hero detrás del contenido */
+  min-height: 430px;
+  margin-top: -90px;
+  padding-top: 130px;
+  background: url("img/galeria/Fondo-del-menu-principal-.png") center bottom / cover no-repeat,
+              linear-gradient(#5aaef0 0%, #bfe3fb 70%, #e8f6ff 100%);
+  text-align: center;
+  overflow: visible;
+}
+.gal-hero-centro { position: relative; z-index: 2; }
+
+.gal-titulo-img {
+  display: block;
+  margin: 55px auto 0;
+  width: min(450px, 70%);
+}
+.gal-subtitulo-img {
+  display: block;
+  margin: 20px auto 0;
+  width: min(300px, 60%);
+}
+
+.gal-camara {
+  position: absolute;
+  left: 6%;
+  top: 100px;
+  width: clamp(100px, 14vw, 180px);
+  z-index: 2;
+  pointer-events: none;
+}
+.gal-pollito {
+  display: none; /* solo una camara */
+  position: absolute;
+  right: 7%;
+  top: 110px;
+  width: clamp(80px, 11vw, 140px);
+  z-index: 2;
+}
+
+/* Nubes en el borde inferior del hero (DETRÁS de las tarjetas) */
+.gal-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  height: 100px;
+  background: url("img/Fondo-blanco-nubes.png") center top / 100% auto no-repeat;
+  pointer-events: none;
+  z-index: 1; /* debajo del contenido */
+}
+
+/* ---------- CONTENEDOR PRINCIPAL (ENCIMA de las nubes) ---------- */
+.gal-contenido {
+  position: relative;
+  z-index: 10; /* tarjetas por encima de las nubes */
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  background-color: #ffffff; /* evita que se vea el paisaje entre tarjetas */
+}
+
+/* ---------- BLOQUES 1 y 3 (imagen sola) ---------- */
+.bloque-imagen {
+  position: relative;
+  z-index: 11;
+}
+
+.bloque-imagen img {
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  z-index: 11;
+}
+
+/* ---------- BLOQUE 2: NUESTRO SOFTWARE ---------- */
+.bloque-software {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;            /* mismo ancho que el bloque 1 */
+  margin: 0 auto;
+}
+.fondo-software {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Botón ¡Quiero explorar! abajo al centro */
+.bloque-software .btn-explorar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: 0 auto;
+  width: 18%;
+}
+.bloque-software .btn-explorar img {
+  display: block;
+  width: 100%;
+}
+.bloque-software .btn-explorar:hover { transform: translateY(-2px); }
+
+/* ---------- CARRUSEL (sobre la zona azul vacía) ---------- */
+.pantallas-carrusel {
+  position: absolute;           /* ← esta regla faltaba: lo mantiene dentro del azul */
+  left: 33%;
+  right: 2%;
+  top: 27%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pantallas-ventana {
+  overflow: hidden;
+  flex: 1;
+}
+.pantallas-pista {
+  display: flex;
+  gap: 18px;
+  transition: transform .45s ease;
+}
+.pantalla-item {
+  flex: 0 0 calc((100% - 54px) / 4);   /* 4 visibles, 3 gaps de 18px */
+  text-align: center;
+}
+.pantalla-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #7aa9c9;
+}
+
+/* Etiquetas: todas del mismo alto */
+.pantalla-etiqueta,
+.etiqueta-texto {
+  height: 30px;
+  margin-top: 8px;
+}
+.pantalla-etiqueta {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.etiqueta-texto {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  background: #4d8a1f;
+  border: 2px solid #d9c84a;
+  border-radius: 20px;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Flechas */
+.pantallas-carrusel .flecha-pantallas {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 4%;
+}
+.pantallas-carrusel .flecha-pantallas img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.pantallas-carrusel .flecha-pantallas:hover { transform: scale(1.08); }
+.pantallas-carrusel .flecha-pantallas:disabled {
+  opacity: .4;
+  cursor: default;
+  transform: none;
+}
+/* ---------- BLOQUE 3: RECURSOS AUDIOVISUALES ---------- */
+.bloque-recursos {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.fondo-recursos {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Los 3 videos sobre la zona crema vacía */
+.recursos-fila {
+  position: absolute;
+  left: 36%;
+  right: 5%;
+  top: 27%;
+  display: flex;
+  align-items: flex-start;
+  gap: 3%;
+}
+.recurso { flex: 1; }
+.recurso-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 6px;
+  background: #000;
+}
+.recurso-boton {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: 10px auto 0;
+}
+
+/* ---------- VISOR DE VIDEO (ventana emergente) ---------- */
+.modal-video {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .75);
+}
+.modal-video[hidden] { display: none; }
+.modal-caja {
+  position: relative;
+  width: min(900px, 92vw);
+}
+.modal-contenido {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 1.3rem;
+  text-align: center;
+}
+.modal-contenido iframe,
+.modal-contenido video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.modal-cerrar {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #8e6bbf;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.recurso { flex: 1; text-align: center; }
+.recurso-boton {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: 10px auto 0;
+}
+
+
+
+
+/* ---------- CIERRE ---------- */
+.cierre-imagen img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 800px) {
+  .gal-camara { display: none; }
+  .pantalla-item { flex-basis: 100%; }   /* 1 visible en móvil */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pantallas-pista { transition: none; }
+}
+/* ========== RESPONSIVE EXTRA GALERÍA ========== */
+@media (max-width: 1024px) {
+  .gal-hero {
+    min-height: 360px;
+    padding-top: 110px;
+  }
+  .gal-titulo-img {
+    width: min(400px, 75%);
+  }
+}
+
+@media (max-width: 768px) {
+  .gal-hero {
+    min-height: 300px;
+    margin-top: -70px;
+    padding-top: 100px;
+  }
+  .gal-titulo-img {
+    width: min(320px, 85%);
+    margin-top: 30px;
+  }
+  .gal-subtitulo-img {
+    width: min(240px, 70%);
+  }
+  .cierre-imagen img {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gal-hero {
+    min-height: 260px;
+    padding-top: 90px;
+  }
+}

@@ -1,0 +1,98 @@
+/* --- ZONA DE CONTENIDO CONTINUA (después del hero) --- */
+.seccion-blanca-contenedor {
+  width: 100%;
+  position: relative;
+  margin-top: 0;
+  padding-top: 60px;
+  padding-bottom: 10px;
+  z-index: 10;
+  /* Fondo continuo crema: evita que se vea el paisaje cortado entre secciones */
+  background-color: #faf8f2;
+}
+
+.contenido-aprenderas {
+  background-color: #faf8f2;
+  border: 2px solid #e1eed0;
+  border-radius: 25px;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  margin: 0 auto 30px auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.aprenderas-titulo img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tarjetas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 1050px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.tarjeta-item {
+  flex: 1 1 260px;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.tarjeta-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tarjeta-item:hover {
+  transform: translateY(-8px);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .contenido-aprenderas {
+    max-width: 95%;
+    padding: 30px 15px;
+  }
+  .tarjetas-container { gap: 20px; }
+  .tarjeta-item { max-width: 280px; }
+}
+
+@media (max-width: 768px) {
+  .seccion-blanca-contenedor {
+    padding-top: 40px;
+  }
+  .tarjetas-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .tarjeta-item {
+    max-width: 280px;
+    width: 90%;
+    flex: none;
+  }
+  .aprenderas-titulo img { max-width: 90%; }
+  .contenido-aprenderas {
+    padding: 25px 12px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-item { max-width: 240px; }
+}

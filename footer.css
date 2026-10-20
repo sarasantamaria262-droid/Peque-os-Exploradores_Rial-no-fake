@@ -1,0 +1,328 @@
+/* ========== FOOTER (verde + onda superior tipo nubes) ========== */
+.footer-principal {
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+  background-color: #2a5a3a;
+  padding-top: 55px;
+  padding-bottom: 0;
+}
+
+/* Onda / nubes verdes en la parte superior del footer */
+.footer-principal::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -45px;
+  height: 55px;background:
+    radial-gradient(ellipse 90px 45px at 5% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 100px 50px at 15% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 85px 42px at 25% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 110px 52px at 38% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 95px 48px at 50% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 100px 50px at 62% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 90px 45px at 75% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 105px 50px at 88% 100%, #2a5a3a 72%, transparent 73%),
+    radial-gradient(ellipse 80px 40px at 97% 100%, #2a5a3a 72%, transparent 73%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Imagen de fondo (si aporta textura); el verde sólido garantiza contraste */
+.footer-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0; /* usamos el verde + onda CSS para que siempre se vea bien */
+}
+
+.footer-contenido {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 15px 20px 25px;
+  gap: 15px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.footer-logo {
+  flex: 0 0 22%;
+  padding-left: 5px;
+  align-items: flex-start;
+}
+
+.footer-divisor {
+  padding-left: 12px;
+  border-left: 2px solid rgba(180, 210, 140, 0.35);
+}
+
+.footer-centrado {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footer-contenido > :nth-child(2) { flex: 0 0 15%; }
+.footer-contenido > :nth-child(3) { flex: 0 0 22%; }
+.footer-contenido > :nth-child(4) { flex: 0 0 20%; }
+
+.logo-footer {
+  width: 100px;
+  max-width: 100%;
+  height: auto;
+}
+
+.mensaje-footer {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-top: 6px;
+}
+
+.titulo-footer {
+  height: 24px;
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.redes {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.redes img {
+  width: 28px;
+  height: 28px;
+}
+
+.lista-footer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.lista-footer img {
+  height: 20px;
+  width: auto;
+  max-width: 100%;
+}
+
+.lista-footer a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.lista-footer a:hover {
+  transform: translateX(3px);
+}
+
+.texto-footer-img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+.correo-item-img {
+  height: 28px;
+  width: auto;
+  max-width: 100%;
+  margin: 3px 0;
+}
+
+.contacto-item-img {
+  height: 24px;
+  width: auto;
+  max-width: 100%;
+  margin: 3px 0;
+}
+
+.ubicación-item-img,
+.ubicacion-item-img {
+  height: 30px;
+  width: auto;
+  max-width: 100%;
+  margin: 3px 0;
+}
+
+.footer-decoracion {
+  width: 150px;
+  max-width: 28%;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-right: 1%;
+  height: auto;
+  align-self: center;
+}
+
+.footer-copyright {
+  text-align: center;
+  padding: 12px 10px;
+  position: relative;
+  z-index: 3;
+  background-color: #1e4229;
+}
+
+.footer-copyright img {
+  height: 28px;
+  width: auto;
+  max-width: 95%;
+}
+
+/* ========== TABLET ========== */
+@media (max-width: 1024px) {
+  .footer-contenido {
+    gap: 20px;
+    padding: 20px 18px 28px;
+  }
+
+  .footer-logo {
+    flex: 0 0 100%;
+    padding-left: 0;
+  }
+
+  .footer-contenido > :nth-child(2),
+  .footer-contenido > :nth-child(3),
+  .footer-contenido > :nth-child(4) {
+    flex: 1 1 40%;
+    min-width: 150px;
+  }
+
+  .footer-divisor {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .footer-decoracion {
+    width: 120px;
+    margin: 8px auto 0;
+  }
+}
+
+/* ========== MÓVIL ========== */
+@media (max-width: 768px) {
+  .footer-principal {
+    padding-top: 40px;
+    margin-top: 30px;
+  }
+
+  .footer-principal::before {
+    top: -35px;
+    height: 45px;
+  }
+
+  .footer-fondo {
+    display: none;
+  }
+
+  .footer-contenido {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 26px;
+    padding: 18px 16px 28px;
+  }
+
+  .footer-col {
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    flex: none;
+    padding-left: 0;
+    align-items: center;
+  }
+
+  .footer-divisor {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .footer-centrado {
+    align-items: center;
+    text-align: center;
+  }
+
+  .lista-footer {
+    align-items: center;
+  }
+
+  .redes {
+    justify-content: center;
+  }
+
+  .footer-decoracion {
+    width: 130px;
+    max-width: 45%;
+    margin: 4px auto 0;
+  }
+
+  .mensaje-footer,
+  .texto-footer-img {
+    width: 100%;
+    max-width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .titulo-footer {
+    height: 22px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .correo-item-img,
+  .contacto-item-img,
+  .ubicación-item-img,
+  .ubicacion-item-img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-copyright {
+    padding: 12px 8px;
+  }
+
+  .footer-copyright img {
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-footer { width: 70px; }
+  .redes img { width: 26px; height: 26px; }
+  .titulo-footer { height: 20px; }
+  .footer-decoracion { width: 100px; }
+  .mensaje-footer,
+  .texto-footer-img { max-width: 230px; }
+}

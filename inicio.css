@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  /* Color continuo debajo del paisaje (evita que se corte el fondo) */
+  background-color: #e8f4d8;
+  background-image: url("img/Fondo-estatico-.png");
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  /* El paisaje se ve completo en la zona del hero */
+
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Capa de paisaje solo en la zona superior (hero) */
+.hero-fondo {
+  position: relative;
+  width: 100%;
+  background: transparent;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  position: relative;
+  z-index: 100;
+}
+
+.navbar {
+  background-color: #ffffff;
+  border: 2px solid #5a5a5a;
+  border-radius: 50px;
+  width: 90%;
+  max-width: 850px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.img-isotipo {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+}
+
+.nav-links img {
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.nav-links img:hover {
+  transform: scale(1.08);
+}
+
+.btn-inicio { height: 29px; }
+.btn-nosotros { height: 29px;px; }
+.btn-galeria { height: 24px; }
+.btn-contacto { height: 24px; }
+
+/* Botón hamburguesa: oculto en escritorio */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: #5a5a5a;
+  border-radius: 3px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.activo span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.activo span:nth-child(2) { opacity: 0; }
+.menu-toggle.activo span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- ESCENA PRINCIPAL (OSO + LETRERO) --- */
+.escena-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0 15px 40px;
+  position: relative;
+  z-index: 5; /* oso y letrero por delante de las nubes */
+}
+
+.posicion-oso {
+  flex: 0 0 auto;
+}
+
+.img-oso {
+  height: 380px;
+  max-height: 380px;
+  width: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.posicion-letrero {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 520px;
+  z-index: 1;
+}
+
+.img-letrero {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* BOTÓN VERDE */
+.btn-software {
+  margin-top: -10px;
+  background-color: #5b8e23;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.btn-software:hover {
+  transform: scale(1.05);
+}
+
+/* --- NUBES: capa separada, DEBAJO del oso --- */
+.nubes-separador {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: -50px; /* solapa solo el borde inferior del paisaje */
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nubes-separador::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 120px;
+  background: url("img/Fondo-blanco-nubes.png") center top / 100% auto no-repeat;
+  z-index: 1;
+}
+
+/* Contenido debajo de las nubes */
+.seccion-blanca-contenedor {
+  position: relative;
+  background-color: #faf8f2;
+  margin-top: -40px;
+  padding-top: 50px;
+  z-index: 2;
+}
+
+.seccion-blanca-contenedor::before {
+  content: none; /* las nubes van en .nubes-separador */
+}
+
+.seccion-blanca-contenedor > * {
+  position: relative;
+  z-index: 3;
+}
+
+.contenido-continuo {
+  background-color: #faf8f2;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* OSO ENCIMA de todo (nubes y contenido) */
+.escena-container {
+  position: relative;
+  z-index: 20 !important;
+  padding-bottom: 20px;
+}
+.posicion-oso,
+.img-oso {
+  position: relative;
+  z-index: 21;
+}
+.posicion-letrero {
+  position: relative;
+  z-index: 21;
+}
+
+/* ========== TABLET ========== */
+@media (max-width: 1024px) {
+  .escena-container {
+    max-width: 95%;
+    gap: 15px;
+  }
+  .img-oso {
+    height: 320px;
+    max-height: 320px;
+  }
+  .posicion-letrero {
+    max-width: 420px;
+  }
+  .btn-software {
+    font-size: 1rem;
+    padding: 9px 22px;
+  }
+}
+
+/* ========== CELULAR / MÓVIL ========== */
+@media (max-width: 770px) {
+  body {
+    background-attachment: scroll;
+    background-size: 100% auto;
+  }
+
+  .navbar {
+    position: relative;
+    height: 56px;
+    width: 94%;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px 0;
+    background: #ffffff;
+    border: 2px solid #5a5a5a;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+  }
+
+  .nav-links.abierto {
+    display: flex;
+  }
+
+  .nav-links img {
+    height: 28px !important;
+  }
+
+  /* Escena: oso arriba, letrero abajo */
+  .escena-container {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 15px;
+    gap: 8px;
+  }
+
+  .img-oso {
+    height: auto !important;
+    max-height: 240px !important;
+    margin: 0 auto;
+  }
+
+  .posicion-letrero {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .btn-software {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+
+  .nubes-separador {
+    height: 70px;
+    margin-top: -30px;
+  }
+  .nubes-separador::before {
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-oso {
+    max-height: 200px !important;
+  }
+  .navbar {
+    height: 52px;
+    padding: 0 12px;
+  }
+  .img-isotipo {
+    height: 36px;
+  }
+  .btn-software {
+    font-size: 0.95rem;
+    padding: 8px 20px;
+  }
+}
+
+/* Pantallas grandes / TV */
+@media (min-width: 1400px) {
+  .escena-container {
+    max-width: 1200px;
+    gap: 30px;
+  }
+  .img-oso {
+    height: 420px;
+    max-height: 420px;
+  }
+  .posicion-letrero {
+    max-width: 560px;
+  }
+}
